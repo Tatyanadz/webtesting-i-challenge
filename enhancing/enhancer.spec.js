@@ -32,3 +32,18 @@ describe("enhancer testing", () => {
         expect(enhancer.repair(item).durability).toEqual(100)
     })
 })
+
+
+describe("get()", () => {
+    test("if enhancement is 0 name is not modified", () => {
+        const item = {name: "Iron Sword", durability: 25, enhancement: 0}
+        const initEnhancement = enhancement.get(item)
+        expect(initEnhancement).toBe("Iron Sword")
+    })
+
+    test("if enhancement level is greater than 0, name changed", () => {
+        const item = {name: "Iron Sword", durability: 25, enhancement: 14}
+        const initEnhancement = enhancement.get(item)
+        expect(initEnhancement).toBe("[+14] Iron Sword")
+    })
+})
